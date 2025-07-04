@@ -16,13 +16,17 @@ int main()
     ball.setPosition(395, 295);
 
     // Set the ball's initial velocity
-    float ball_speed = 0.2f;
+
+    float ball_speed = 300.f; // pixels per second
     float ball_velocity_x = -ball_speed;
     float ball_velocity_y = ball_speed;
 
+    sf::Clock clock;
+    
     // Game loop
     while (window.isOpen())
     {
+        float deltaTime = clock.restart().asSeconds();
         // Handle events
         sf::Event event;
         while (window.pollEvent(event))
@@ -32,7 +36,7 @@ int main()
         }
 
         // Move the ball
-        ball.move(ball_velocity_x, ball_velocity_y);
+        ball.move(ball_velocity_x * deltaTime, ball_velocity_y * deltaTime);
 
         // Check for collisions with walls
         if (ball.getPosition().y < 0 || ball.getPosition().y > 590)
@@ -45,13 +49,14 @@ int main()
 
         // Move the paddles with the keyboard
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            paddle1.move(0, -0.3f);
+            paddle1.move(0, -300.f * deltaTime);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            paddle1.move(0, 0.3f);
+            paddle1.move(0, 300.f * deltaTime);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            paddle2.move(0, -0.3f);
+            paddle2.move(0, -300.f * deltaTime);
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-            paddle2.move(0, 0.3f);
+            paddle2.move(0, 300.f * deltaTime);
+
 
         // Clear the screen
         window.clear(sf::Color::Black);

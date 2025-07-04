@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 // g++ -std=c++11 main.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-// g++ -std=c++11 wtf.cpp -o wtf -lsfml-graphics -lsfml-window -lsfml-system 
+// g++ -std=c++11 run.cpp -o run -lsfml-graphics -lsfml-window -lsfml-system 
 
 //If cube touches the paddles  it bounces off in the opposite direction while the angle of reflection depends on where on the paddle the ball hits and how fast the paddle is moving
 //AI maybe
@@ -16,7 +16,7 @@ int main(){
     sf::RenderWindow window(sf::VideoMode(800, 600), "Pong Game");
 
     sf::Font font;
-    if (!font.loadFromFile("/Users/will/Random_codes/C++_stuff/Pong_game/Poppins/Poppins-Bold.ttf")){
+    if (!font.loadFromFile("Poppins/Poppins-Bold.ttf")){
         std::cout << "Couldn't load font" << std::endl;
         return 0;
     }
@@ -36,7 +36,7 @@ int main(){
 
         void draw(sf::RenderWindow& window){
             sf::Font font;
-            font.loadFromFile("/Users/will/Random_codes/C++_stuff/Pong_game/Poppins/Poppins-Bold.ttf");
+            font.loadFromFile("Poppins/Poppins-Bold.ttf");
 
             sf::Text text;
             text.setFillColor(sf::Color::White);
@@ -57,7 +57,7 @@ int main(){
         
         void draw(sf::RenderWindow& window){
             sf::Font font;
-            font.loadFromFile("/Users/will/Random_codes/C++_stuff/Pong_game/Poppins/Poppins-Bold.ttf");
+            font.loadFromFile("Poppins/Poppins-Bold.ttf");
             sf::Text text;
             text.setFillColor(sf::Color::White);
             text.setCharacterSize(90);
@@ -72,8 +72,8 @@ int main(){
     ScoreCounterPlayer2 scoreCounter2;
 
     sf::SoundBuffer buffer1, buffer2, buffer3;
-    if (!buffer1.loadFromFile("/Users/will/Random_codes/C++_stuff/Pong_game/4390__noisecollector__pongblipf4.wav") || !buffer2.loadFromFile("/Users/will/Random_codes/C++_stuff/Pong_game/4391__noisecollector__pongblipf5.wav")
-    || !buffer3.loadFromFile("/Users/will/Random_codes/C++_stuff/Pong_game/score_sound.wav")){
+    if (!buffer1.loadFromFile("4390__noisecollector__pongblipf4.wav") || !buffer2.loadFromFile("4391__noisecollector__pongblipf5.wav")
+    || !buffer3.loadFromFile("score_sound.wav")){
         return 1;
     }
 
@@ -165,12 +165,12 @@ int main(){
     }
 
     if (cube.getGlobalBounds().intersects(player1.getGlobalBounds())){
-        ball_speed = 1.5f;
+        ball_speed = 1.0f;
         ball_velocity_x = ball_speed;
         sound2.play();
     }
     if (cube.getGlobalBounds().intersects(player2.getGlobalBounds())){
-        ball_speed = 1.5f;
+        ball_speed = 1.0f;
         ball_velocity_x = -ball_speed;
         sound2.play();
     }
