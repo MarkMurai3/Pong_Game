@@ -226,3 +226,4 @@ int main(){
     return 0;
 }
 //g++ -std=c++11 main.cpp -o main -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+//g++ -std=c++11 main.cpp -o main.exe -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
